@@ -15,7 +15,7 @@ class _RegisterState extends State<Register> {
   String password = "";
   @override
   Widget build(BuildContext context) {
-    Authenticate auth = Authenticate();
+    AuthService auth = AuthService();
     return Scaffold(
       appBar: AppBar(
         title: const Text("Sign In"),
@@ -23,7 +23,7 @@ class _RegisterState extends State<Register> {
       body: Container(
         padding: EdgeInsets.symmetric(
             horizontal: context.lowWidthValue,
-            vertical: context.lowHeighthValue),
+            vertical: context.mediumHeightValue),
         child: Column(
           children: [
             Form(
@@ -53,6 +53,7 @@ class _RegisterState extends State<Register> {
                   decoration:
                       textInputDecoration.copyWith(hintText: "Password"),
                 ),
+                context.emptyWidgetHeight,
                 context.emptyWidgetHeight,
                 ElevatedButton(
                     onPressed: () =>

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_firebase/extensions/context_extension.dart';
+import 'package:todo_firebase/services/authentication.dart';
 import 'package:todo_firebase/shared/constants.dart';
 
 class SignIn extends StatefulWidget {
@@ -10,6 +11,8 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
+  String email = "";
+  String password = "";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,19 +28,26 @@ class _SignInState extends State<SignIn> {
             Form(
                 child: Column(
               children: [
-                SizedBox(
-                  height: context.dynamicHeight(0.01),
-                ),
+                context.emptyWidgetHeight,
                 TextFormField(
+                  onChanged: (value) => setState(() {
+                    email = value;
+                  }),
                   decoration: textInputDecoration.copyWith(hintText: "E-mail"),
                 ),
                 context.emptyWidgetHeight,
                 TextFormField(
+                  onChanged: (value) => setState(() {
+                    password = value;
+                  }),
                   decoration:
                       textInputDecoration.copyWith(hintText: "Password"),
                 ),
                 context.emptyWidgetHeight,
-                const ElevatedButton(onPressed: null, child: Text("Register"))
+                ElevatedButton(
+                    onPressed: () =>
+                        AuthService().signInWithEmailPassword(email, password),
+                    child: const Text("Sign In"))
               ],
             ))
           ],
