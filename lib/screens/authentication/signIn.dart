@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_firebase/extensions/context_extension.dart';
 import 'package:todo_firebase/shared/constants.dart';
 
 class SignIn extends StatefulWidget {
@@ -22,21 +23,18 @@ class _SignInState extends State<SignIn> {
             Form(
                 child: Column(
               children: [
-                const SizedBox(
-                  height: 20,
+                SizedBox(
+                  height: context.dynamicHeight(0.1),
                 ),
                 TextFormField(
                   decoration: textInputDecoration.copyWith(hintText: "E-mail"),
-                ),
-                const SizedBox(
-                  height: 20,
                 ),
                 TextFormField(
                   decoration:
                       textInputDecoration.copyWith(hintText: "Password"),
                 ),
-                const SizedBox(
-                  height: 30,
+                SizedBox(
+                  height: context.dynamicHeight(0.1),
                 ),
                 const ElevatedButton(onPressed: null, child: Text("Register"))
               ],
