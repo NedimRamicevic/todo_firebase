@@ -4,6 +4,14 @@ extension ContextExtension on BuildContext {
   double dynamicHeight(double value) => MediaQuery.of(this).size.height * value;
   double dynamicWidth(double value) => MediaQuery.of(this).size.width * value;
 
-  double get lowWidthValue => MediaQuery.of(this).size.width * 0.1;
-  double get lowHeighthValue => MediaQuery.of(this).size.height * 0.01;
+  double get lowWidthValue => dynamicWidth(0.1);
+  double get lowHeighthValue => dynamicHeight(0.01);
+  double get mediumHeightValue => dynamicHeight(0.05);
+}
+
+extension EmptyWidetBox on BuildContext {
+  Widget get emptyWidgetHeight => SizedBox(
+        height: lowHeighthValue,
+      );
+  Widget get emptyWidgetWidth => SizedBox(height: lowWidthValue);
 }

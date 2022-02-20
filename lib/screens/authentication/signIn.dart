@@ -17,25 +17,26 @@ class _SignInState extends State<SignIn> {
         title: const Text("Sign In"),
       ),
       body: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 50),
+        padding: EdgeInsets.symmetric(
+            horizontal: context.lowWidthValue,
+            vertical: context.mediumHeightValue),
         child: Column(
           children: [
             Form(
                 child: Column(
               children: [
                 SizedBox(
-                  height: context.dynamicHeight(0.1),
+                  height: context.dynamicHeight(0.01),
                 ),
                 TextFormField(
                   decoration: textInputDecoration.copyWith(hintText: "E-mail"),
                 ),
+                context.emptyWidgetHeight,
                 TextFormField(
                   decoration:
                       textInputDecoration.copyWith(hintText: "Password"),
                 ),
-                SizedBox(
-                  height: context.dynamicHeight(0.1),
-                ),
+                context.emptyWidgetHeight,
                 const ElevatedButton(onPressed: null, child: Text("Register"))
               ],
             ))
