@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:todo_firebase/services/authentication.dart';
 import 'package:todo_firebase/services/data_retrieve.dart';
@@ -14,7 +16,9 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    timeService.fetc();
+    Timer.periodic(const Duration(milliseconds: 1), (timer) {
+      timeService.fetc();
+    });
     return StreamBuilder<CurrentTime>(
         stream: timeService.time,
         builder: (context, snapshot) {
