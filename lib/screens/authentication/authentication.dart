@@ -12,7 +12,6 @@ class Authentication extends StatefulWidget {
 class _AuthenticationState extends State<Authentication> {
   bool isSignIn = true;
   void setIfSignIn() {
-    print("çalış");
     setState(() {
       isSignIn = !isSignIn;
     });
