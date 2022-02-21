@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:todo_firebase/services/authentication.dart';
 import 'package:todo_firebase/services/data_retrieve.dart';
 
+import '../../shared/constants.dart';
+
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
 
@@ -13,7 +15,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     timeService.fetc();
-    return StreamBuilder<Object>(
+    return StreamBuilder<CurrentTime>(
         stream: timeService.time,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
@@ -28,7 +30,7 @@ class _HomeState extends State<Home> {
                 title: const Text("Home"),
               ),
               body: Center(
-                child: Text(snapshot.data.toString()),
+                child: Text(snapshot.data!.time),
               ),
             );
           } else if (snapshot.hasError) {
