@@ -14,11 +14,25 @@ class TimeServise {
     } else {
       // If the server did not return a 200 OK response,
       // then throw an exception.
-      throw Exception('Failed to load album');
+      throw Exception('Failed to load time');
     }
   }
 }
 
-class WeatherServise {}
+class WeatherServise {
+  Future<CurrentWeather> fetchWeather() async {
+    final response = await http.get(Uri.parse(
+        'http://api.openweathermap.org/data/2.5/weather?q=London&units=metric&cnt=7&appid=4cb5591bc154c06ef202e10a2ae5757b'));
 
-final timeService = TimeServise();
+    if (response.statusCode == 200) {
+      // If the server did return a 200 OK response,
+      // then parse the JSON.
+      print("asdasdasdasd ${response.body}");
+      return CurrentWeather.fromJSon(jsonDecode(response.body));
+    } else {
+      // If the server did not return a 200 OK response,
+      // then throw an exception.
+      throw Exception('Failed to load time');
+    }
+  }
+}

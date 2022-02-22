@@ -16,7 +16,21 @@ class CurrentTime {
 
   factory CurrentTime.fromJSon(Map<String, dynamic> json) {
     return CurrentTime(
-        location: json["location"],
-        time: json["datetime"].toString().replaceAll("T", " "));
+        location: json["timezone"],
+        time: json["datetime"].toString().split("T")[1].substring(0, 8));
+  }
+}
+
+class CurrentWeather {
+  final String temp;
+  final String location;
+
+  const CurrentWeather({required this.temp, required this.location});
+
+  factory CurrentWeather.fromJSon(Map<String, dynamic> json) {
+    print("burası önemli ${json["main"]["temp"]}");
+    return CurrentWeather(
+        location: json["main"]["temp"].toString(),
+        temp: json["weather"]["main"].toString());
   }
 }
