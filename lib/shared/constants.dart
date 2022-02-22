@@ -15,6 +15,8 @@ class CurrentTime {
   const CurrentTime({required this.location, required this.time});
 
   factory CurrentTime.fromJSon(Map<String, dynamic> json) {
-    return CurrentTime(location: json["location"], time: json["datetime"]);
+    return CurrentTime(
+        location: json["location"],
+        time: json["datetime"].toString().replaceAll("T", " "));
   }
 }

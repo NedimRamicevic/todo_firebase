@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:rxdart/subjects.dart';
 import 'package:todo_firebase/shared/constants.dart';
 import 'package:http/http.dart' as http;
 
@@ -18,15 +17,8 @@ class TimeServise {
       throw Exception('Failed to load album');
     }
   }
-
-  final _timeFetcher = PublishSubject<CurrentTime>();
-
-  Stream<CurrentTime> get time => _timeFetcher.stream;
-
-  fetc() async {
-    CurrentTime currentTime = await fetchTime();
-    _timeFetcher.sink.add(currentTime);
-  }
 }
+
+class WeatherServise {}
 
 final timeService = TimeServise();

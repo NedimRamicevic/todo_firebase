@@ -1,8 +1,7 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:todo_firebase/services/authentication.dart';
-import 'package:todo_firebase/services/data_retrieve.dart';
+import 'package:todo_firebase/services/timeBloC.dart';
 
 import '../../shared/constants.dart';
 
@@ -16,11 +15,11 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    Timer.periodic(const Duration(milliseconds: 1), (timer) {
-      timeService.fetc();
+    Timer.periodic(const Duration(seconds: 1), (timer) {
+      timeBloC.fetc();
     });
     return StreamBuilder<CurrentTime>(
-        stream: timeService.time,
+        stream: timeBloC.time,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return Scaffold(
@@ -34,13 +33,13 @@ class _HomeState extends State<Home> {
                 title: const Text("Home"),
               ),
               body: Center(
-                child: Text(snapshot.data!.time),
+                child: Text(snapshot.toString()),
               ),
             );
           } else if (snapshot.hasError) {
             return Text(snapshot.error.toString());
           }
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         });
   }
 }
