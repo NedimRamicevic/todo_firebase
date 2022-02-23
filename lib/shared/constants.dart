@@ -46,7 +46,7 @@ class ForecastData {
 
   ForecastData({required this.list});
 
-  factory ForecastData.fromJson(Map<String, dynamic> json) {
+  factory ForecastData.fromJSon(Map<String, dynamic> json) {
     List list = [];
 
     for (dynamic e in json['list']) {
