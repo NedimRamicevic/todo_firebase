@@ -36,8 +36,27 @@ class _HomeState extends State<Home> {
                 body: Center(
                   child: Column(
                     children: [
-                      Weather(currentWeather: snapshot.data!),
-                      const WeatherList(),
+                      Expanded(
+                        child: Center(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(snapshot.data!.name,
+                                  style: const TextStyle(color: Colors.white)),
+                              Text(snapshot.data!.weather,
+                                  style: const TextStyle(
+                                      color: Colors.white, fontSize: 32.0)),
+                              Text(snapshot.data!.temp,
+                                  style: const TextStyle(color: Colors.white)),
+                              Image.network(
+                                  "https://openweathermap.org/img/w/${snapshot.data!.icon}.png"),
+                              Text(snapshot.data!.date.toString(),
+                                  style: const TextStyle(color: Colors.white))
+                            ],
+                          ),
+                        ),
+                      ),
+                      const SafeArea(child: WeatherList()),
                     ],
                   ),
                 ));
