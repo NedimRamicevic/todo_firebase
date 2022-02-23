@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import '../../services/authentication.dart';
+
 import '../../services/timeBloC.dart';
 import '../../shared/constants.dart';
 
@@ -21,7 +21,7 @@ class _TimeState extends State<Time> {
         stream: timeBloC.time,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            Center(
+            return Center(
               child: Text(snapshot.data!.time,
                   style: const TextStyle(color: Colors.white)),
             );

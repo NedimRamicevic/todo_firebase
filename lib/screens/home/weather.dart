@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:todo_firebase/screens/home/time.dart';
-import 'package:todo_firebase/services/timeBloC.dart';
 import 'package:todo_firebase/services/weatherBloC.dart';
 import 'package:todo_firebase/shared/constants.dart';
 import '../../services/authentication.dart';
@@ -44,6 +43,7 @@ class _WeatherState extends State<Weather> {
                         style: const TextStyle(color: Colors.white)),
                     Image.network(
                         "https://openweathermap.org/img/w/${snapshot.data!.icon}.png"),
+                    const Time(),
                   ],
                 ),
               ),

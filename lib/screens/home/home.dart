@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todo_firebase/screens/home/time.dart';
+
 import 'package:todo_firebase/screens/home/weather.dart';
 
 class Home extends StatefulWidget {
@@ -14,8 +14,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Column(
       children: const [
-        // Expanded(child: Weather()),
-        Expanded(child: Time()),
+        Expanded(child: Weather()),
       ],
     );
   }

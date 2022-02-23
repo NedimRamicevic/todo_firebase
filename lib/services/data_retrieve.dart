@@ -27,7 +27,7 @@ class WeatherServise {
     if (response.statusCode == 200) {
       // If the server did return a 200 OK response,
       // then parse the JSON.
-      print("asdasdasdasd ${response.body}");
+
       return CurrentWeather.fromJSon(jsonDecode(response.body));
     } else {
       // If the server did not return a 200 OK response,
