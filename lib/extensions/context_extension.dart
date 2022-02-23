@@ -7,6 +7,7 @@ extension ContextExtension on BuildContext {
   double get lowWidthValue => dynamicWidth(0.1);
   double get lowHeighthValue => dynamicHeight(0.01);
   double get mediumHeightValue => dynamicHeight(0.05);
+  double get highHeightValue => dynamicHeight(0.23);
 }
 
 extension EmptyWidetBox on BuildContext {

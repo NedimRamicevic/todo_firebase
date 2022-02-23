@@ -26,14 +26,19 @@ class CurrentWeather {
   final String weather;
   final String name;
   final String icon;
-  const CurrentWeather(
-      {required this.temp,
-      required this.weather,
-      required this.name,
-      required this.icon});
+  final DateTime date;
+  const CurrentWeather({
+    required this.temp,
+    required this.weather,
+    required this.name,
+    required this.icon,
+    required this.date,
+  });
 
   factory CurrentWeather.fromJSon(Map<String, dynamic> json) {
     return CurrentWeather(
+        date: DateTime.fromMillisecondsSinceEpoch(json['dt'] * 1000,
+            isUtc: false),
         temp: json["main"]["temp"].toString(),
         weather: json["weather"][0]["main"].toString(),
         name: json["name"],
@@ -51,10 +56,12 @@ class ForecastData {
 
     for (dynamic e in json['list']) {
       CurrentWeather weather = CurrentWeather(
-          name: json['city']['name'],
-          temp: e['main']['temp'].toDouble(),
-          weather: e['weather'][0]['main'],
-          icon: e['weather'][0]['icon']);
+        date: DateTime.fromMillisecondsSinceEpoch(e['dt'] * 1000, isUtc: false),
+        name: json['city']['name'],
+        temp: e['main']['temp'].toString(),
+        weather: e['weather'][0]['main'].toString(),
+        icon: e['weather'][0]['icon'],
+      );
       list.add(weather);
     }
 

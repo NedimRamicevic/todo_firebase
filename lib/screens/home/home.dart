@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:todo_firebase/screens/home/weather.dart';
+import 'package:todo_firebase/screens/home/weatherList.dart';
 import 'package:todo_firebase/shared/constants.dart';
 
 import '../../services/authentication.dart';
@@ -20,30 +21,30 @@ class _HomeState extends State<Home> {
     return StreamBuilder<CurrentWeather>(
         stream: weatherBloC.weather,
         builder: (context, snapshot) {
-         if (snapshot.hasData) {
-          return Scaffold(
-              backgroundColor: Colors.blueGrey,
-              appBar: AppBar(
-                actions: [
-                  ElevatedButton.icon(
-                      onPressed: () => AuthService().signOut(),
-                      icon: const Icon(Icons.logout_rounded),
-                      label: const Text("Logout"))
-                ],
-                title: const Text("Home"),
-              ),
-              body: Center(
-                child: Column(
-                  children: [
-                    Weather(currentWeather: snapshot.data!),
-                    
+          if (snapshot.hasData) {
+            return Scaffold(
+                backgroundColor: Colors.blueGrey,
+                appBar: AppBar(
+                  actions: [
+                    ElevatedButton.icon(
+                        onPressed: () => AuthService().signOut(),
+                        icon: const Icon(Icons.logout_rounded),
+                        label: const Text("Logout"))
                   ],
+                  title: const Text("Home"),
                 ),
-              ));}
-               else if (snapshot.hasError) {
+                body: Center(
+                  child: Column(
+                    children: [
+                      Weather(currentWeather: snapshot.data!),
+                      const WeatherList(),
+                    ],
+                  ),
+                ));
+          } else if (snapshot.hasError) {
             return Text(snapshot.error.toString());
           }
-          return const Center(child: CircularProgressIndicator())
+          return const Center(child: CircularProgressIndicator());
         });
   }
 }

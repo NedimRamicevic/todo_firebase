@@ -10,7 +10,7 @@ class Weather extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: context.dynamicWidth(0.3),
+      width: context.dynamicWidth(0.35),
       child: Card(
         elevation: 0,
         color: Colors.red,
@@ -27,7 +27,8 @@ class Weather extends StatelessWidget {
                   style: const TextStyle(color: Colors.white)),
               Image.network(
                   "https://openweathermap.org/img/w/${currentWeather.icon}.png"),
-              const Time(),
+              Text(currentWeather.date.toString(),
+                  style: const TextStyle(color: Colors.white))
             ],
           ),
         ),
