@@ -14,7 +14,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Column(
       children: const [
-        Expanded(child: Weather()),
+        // Expanded(child: Weather()),
         Expanded(child: Time()),
       ],
     );

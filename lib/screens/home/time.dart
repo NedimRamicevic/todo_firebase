@@ -21,19 +21,9 @@ class _TimeState extends State<Time> {
         stream: timeBloC.time,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return Scaffold(
-              appBar: AppBar(
-                actions: [
-                  ElevatedButton.icon(
-                      onPressed: () => AuthService().signOut(),
-                      icon: const Icon(Icons.logout_rounded),
-                      label: const Text("Logout"))
-                ],
-                title: const Text("Home"),
-              ),
-              body: Center(
-                child: Text(snapshot.data!.time),
-              ),
+            Center(
+              child: Text(snapshot.data!.time,
+                  style: const TextStyle(color: Colors.white)),
             );
           } else if (snapshot.hasError) {
             return Text(snapshot.error.toString());
