@@ -12,9 +12,7 @@ class WeatherBloC {
   Stream<CurrentWeather> get weather => _weatherFetcher.stream;
 
   fetc() async {
-    print("selams");
     CurrentWeather currentWeather = await _weatherServise.fetchWeather();
-    print(currentWeather);
     _weatherFetcher.sink.add(currentWeather);
   }
 

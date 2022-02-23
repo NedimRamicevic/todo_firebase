@@ -33,11 +33,33 @@ class CurrentWeather {
       required this.icon});
 
   factory CurrentWeather.fromJSon(Map<String, dynamic> json) {
-    print("burası önemli ${json["main"]["temp"]}");
     return CurrentWeather(
         temp: json["main"]["temp"].toString(),
         weather: json["weather"][0]["main"].toString(),
         name: json["name"],
         icon: json["weather"][0]["icon"]);
+  }
+}
+
+class ForecastData {
+  final List list;
+
+  ForecastData({required this.list});
+
+  factory ForecastData.fromJson(Map<String, dynamic> json) {
+    List list = [];
+
+    for (dynamic e in json['list']) {
+      CurrentWeather weather = CurrentWeather(
+          name: json['city']['name'],
+          temp: e['main']['temp'].toDouble(),
+          weather: e['weather'][0]['main'],
+          icon: e['weather'][0]['icon']);
+      list.add(weather);
+    }
+
+    return ForecastData(
+      list: list,
+    );
   }
 }
