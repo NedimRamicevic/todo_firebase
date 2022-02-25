@@ -70,3 +70,5 @@ class ForecastData {
     );
   }
 }
+
+List cities = ["Istanbul", "London", "Paris", "Ankara", "Moscow"];

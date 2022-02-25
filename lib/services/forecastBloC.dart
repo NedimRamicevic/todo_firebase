@@ -5,10 +5,12 @@ import 'package:todo_firebase/shared/constants.dart';
 class ForecastBloC extends ChangeNotifier {
   final WeatherServise _weatherServise = WeatherServise();
 
-  late final Future<ForecastData> forecastData;
+  List forecastData = [];
 
-  void fetch(String city) {
-    forecastData = _weatherServise.fetchForecast(city);
+  Future<void> fetch(String city) async {
+    await _weatherServise
+        .fetchForecast(city)
+        .then((value) => forecastData = value.list);
     notifyListeners();
   }
 }

@@ -38,7 +38,7 @@ class WeatherServise {
 
   Future<ForecastData> fetchForecast(String city) async {
     final forecastResponse = await http.get(Uri.parse(
-        'http://api.openweathermap.org/data/2.5/forecast?q=London&units=metric&cnt=7&appid=4cb5591bc154c06ef202e10a2ae5757b'));
+        'http://api.openweathermap.org/data/2.5/forecast?q=$city&units=metric&cnt=7&appid=4cb5591bc154c06ef202e10a2ae5757b'));
     if (forecastResponse.statusCode == 200) {
       // If the server did return a 200 OK response,
       // then parse the JSON.

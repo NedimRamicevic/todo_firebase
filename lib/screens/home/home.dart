@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:todo_firebase/screens/home/dropdown.dart';
 
 import 'package:todo_firebase/screens/home/weather.dart';
 import 'package:todo_firebase/screens/home/weatherList.dart';
+import 'package:todo_firebase/services/forecastBloC.dart';
 import 'package:todo_firebase/shared/constants.dart';
 
 import '../../services/authentication.dart';
@@ -56,7 +59,14 @@ class _HomeState extends State<Home> {
                           ),
                         ),
                       ),
-                      const SafeArea(child: WeatherList()),
+                      ChangeNotifierProvider(
+                          create: (context) => ForecastBloC(),
+                          child: Column(
+                            children: [
+                              CityDropDown(),
+                              SafeArea(child: WeatherList()),
+                            ],
+                          )),
                     ],
                   ),
                 ));
