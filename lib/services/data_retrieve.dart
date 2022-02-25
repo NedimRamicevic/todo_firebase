@@ -20,9 +20,9 @@ class TimeServise {
 }
 
 class WeatherServise {
-  Future<CurrentWeather> fetchWeather() async {
+  Future<CurrentWeather> fetchWeather(String city) async {
     final response = await http.get(Uri.parse(
-        'http://api.openweathermap.org/data/2.5/weather?q=London&units=metric&cnt=7&appid=4cb5591bc154c06ef202e10a2ae5757b'));
+        'http://api.openweathermap.org/data/2.5/weather?q=$city&units=metric&cnt=7&appid=4cb5591bc154c06ef202e10a2ae5757b'));
 
     if (response.statusCode == 200) {
       // If the server did return a 200 OK response,

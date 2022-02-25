@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todo_firebase/screens/home/time.dart';
+import 'package:intl/intl.dart';
 import 'package:todo_firebase/shared/constants.dart';
 import 'package:todo_firebase/extensions/context_extension.dart';
 
@@ -27,7 +27,7 @@ class Weather extends StatelessWidget {
                   style: const TextStyle(color: Colors.white)),
               Image.network(
                   "https://openweathermap.org/img/w/${currentWeather.icon}.png"),
-              Text(currentWeather.date.toString(),
+              Text(DateFormat.yMMMd().format(currentWeather.date),
                   style: const TextStyle(color: Colors.white))
             ],
           ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_firebase/services/forecastBloC.dart';
+import 'package:todo_firebase/services/weatherBloC.dart';
 import 'package:todo_firebase/shared/constants.dart';
 
 class CityDropDown extends StatefulWidget {
@@ -23,6 +24,7 @@ class _CityDropDownState extends State<CityDropDown> {
       }).toList(),
       onChanged: (val) {
         Provider.of<ForecastBloC>(context, listen: false).fetch(val.toString());
+        Provider.of<WeatherBloC>(context, listen: false).fetc(val.toString());
       },
     );
   }

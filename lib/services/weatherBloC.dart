@@ -1,23 +1,16 @@
 import 'dart:async';
-
+import 'package:flutter/cupertino.dart';
 import 'package:todo_firebase/services/data_retrieve.dart';
 import 'package:todo_firebase/shared/constants.dart';
 
-class WeatherBloC {
+class WeatherBloC extends ChangeNotifier {
   final WeatherServise _weatherServise = WeatherServise();
 
-  final StreamController<CurrentWeather> _weatherFetcher =
-      StreamController<CurrentWeather>();
+  CurrentWeather? weather;
 
-  Stream<CurrentWeather> get weather => _weatherFetcher.stream;
-
-  fetc() async {
-    CurrentWeather currentWeather = await _weatherServise.fetchWeather();
-    _weatherFetcher.sink.add(currentWeather);
-  }
-
-  dispose() {
-    _weatherFetcher.close();
+  Future<void> fetc(String city) async {
+    await _weatherServise.fetchWeather(city).then((value) => weather = value);
+    notifyListeners();
   }
 }
 
