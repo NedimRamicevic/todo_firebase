@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:todo_firebase/screens/home/dropdown.dart';
 import 'package:todo_firebase/screens/home/main_weather.dart';
 import 'package:todo_firebase/screens/home/weatherList.dart';
+import 'package:todo_firebase/screens/sidemenu/sidemenu.dart';
 import 'package:todo_firebase/services/forecastBloC.dart';
 import '../../services/authentication.dart';
 import '../../services/weatherBloC.dart';
@@ -20,6 +21,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.blueGrey,
+        drawer: const SideMenu(),
         appBar: AppBar(
           actions: [
             ElevatedButton.icon(
