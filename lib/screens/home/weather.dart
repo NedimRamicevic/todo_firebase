@@ -13,7 +13,7 @@ class Weather extends StatelessWidget {
       width: context.dynamicWidth(0.35),
       child: Card(
         elevation: 0,
-        color: Colors.red,
+        color: Colors.grey,
         child: Padding(
           padding: EdgeInsets.all(context.lowHeighthValue),
           child: Column(

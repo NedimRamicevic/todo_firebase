@@ -53,15 +53,17 @@ class ForecastData {
 
   factory ForecastData.fromJSon(Map<String, dynamic> json) {
     List list = [];
-
+    int _i = 0;
     for (dynamic e in json['list']) {
       CurrentWeather weather = CurrentWeather(
-        date: DateTime.fromMillisecondsSinceEpoch(e['dt'] * 1000, isUtc: false),
+        date: DateTime.fromMillisecondsSinceEpoch(e['dt'] * 1000, isUtc: false)
+            .add(Duration(days: _i)),
         name: json['city']['name'],
         temp: e['main']['temp'].toString(),
         weather: e['weather'][0]['main'].toString(),
         icon: e['weather'][0]['icon'],
       );
+      _i++;
       list.add(weather);
     }
 

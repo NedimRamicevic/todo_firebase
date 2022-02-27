@@ -6,6 +6,7 @@ import 'package:todo_firebase/screens/home/weatherList.dart';
 import 'package:todo_firebase/services/forecastBloC.dart';
 import '../../services/authentication.dart';
 import '../../services/weatherBloC.dart';
+import '../../extensions/context_extension.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -38,6 +39,14 @@ class _HomeState extends State<Home> {
           child: Center(
             child: Column(
               children: [
+                SizedBox(
+                  height: context.lowWidthValue,
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: context.lowHeighthValue * 2),
+                  child: const CityDropDown(),
+                ),
                 Expanded(
                   child: Consumer<WeatherBloC>(
                     builder: (context, value, child) {
@@ -51,11 +60,18 @@ class _HomeState extends State<Home> {
                     },
                   ),
                 ),
-                Column(
-                  children: [
-                    CityDropDown(),
-                    SafeArea(child: WeatherList()),
-                  ],
+                Padding(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: context.lowHeighthValue),
+                  child: SafeArea(
+                      child: Column(
+                    children: [
+                      const WeatherList(),
+                      SizedBox(
+                        height: context.lowWidthValue,
+                      )
+                    ],
+                  )),
                 )
               ],
             ),
